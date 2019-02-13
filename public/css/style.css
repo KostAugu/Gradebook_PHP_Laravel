@@ -1,0 +1,101 @@
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+/* is radaru */
+
+#pagination a {
+    color: grey;
+  }
+  
+  #pagination .active span {
+    background: #666;
+    color: #fff;
+    border-radius: 3px;
+    border-color: black;
+  }
+  
+  #pagination .disabled .arrow {
+    background: rgba(149, 148, 148, 0.924);
+  }
+  
+  #limitSelect {
+    background: #666;
+    color: #fff;
+    border-radius: 3px;
+    border-color: black;
+  }
+  
+  .edit_delete_buttons {
+    display: flex;
+    justify-content: center;
+  
+  }
+  
+  /* *********CREAT********** */
+  
+  .entryform {
+    margin-top: 10%;
+  }
+  
+  .entryform td,
+  .entryform th {
+      line-height: 40px;
+      font-size: 18px;
+  }
+  
+  h3 {
+    margin-top: 3%;
+    font-weight: bold;
+  }
+  
+  .error {
+    color: red;
+  }
