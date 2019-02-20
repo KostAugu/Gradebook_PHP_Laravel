@@ -177,7 +177,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         
+        /*
+        * Added providers
+        */
         BladeSvg\BladeSvgServiceProvider::class,
+        Kyslik\ColumnSortable\ColumnSortableServiceProvider::class
     ],
 
     /*

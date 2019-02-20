@@ -29,7 +29,12 @@ class LectureController extends Controller
             $pagination = 10;
         }
                 
-        $lectures = App\Lecture::paginate($pagination);
+        try {
+            $lectures = App\Lecture::sortable()->paginate($pagination);
+        } catch (\Kyslik\ColumnSortable\Exceptions\ColumnSortableException $e) {
+            dd($e);         //Later
+        }
+
         $count = ($lectures->currentPage()-1)*$pagination+1;
 
         if ($per_page != null) {
@@ -71,7 +76,7 @@ class LectureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Lecture $lecture)
     {
         //
     }
@@ -82,9 +87,9 @@ class LectureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Lecture $lecture)
     {
-        //
+        return view('lectures.edit', ["lecture" => $lecture]);
     }
 
     /**
@@ -94,9 +99,13 @@ class LectureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Lecture $lecture)
     {
-        //
+        $lecture->name = $request->input('name');
+        $lecture->description = $request->input('description');      
+        $lecture->save();
+
+        return back()->with('success', 'Record corrected successfully!');
     }
 
     /**
@@ -105,8 +114,9 @@ class LectureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Lecture $lecture)
     {
-        //
+        $lecture->delete();
+        return redirect('/lectures')->with('info', 'Record was deleted!');
     }
 }

@@ -27,9 +27,13 @@ class StudentController extends Controller
             $pagination = $per_page;
         } else {
             $pagination = 10;
+        }                
+        
+        try {
+            $students = App\Student::sortable()->paginate($pagination);
+        } catch (\Kyslik\ColumnSortable\Exceptions\ColumnSortableException $e) {
+            dd($e);      //Later
         }
-                
-        $students = App\Student::paginate($pagination);
         $count = ($students->currentPage()-1)*$pagination+1;
 
         if ($per_page != null) {
@@ -73,9 +77,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Student $student)
     {
-        //
+
     }
 
     /**
@@ -84,9 +88,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
-        //
+        return view('students.edit', ["student" => $student]);
     }
 
     /**
@@ -96,9 +100,15 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
-        //
+        $student->name = $request->input('name');
+        $student->surname = $request->input('surname');      
+        $student->email = $request->input('email');   
+        $student->phone = $request->input('phone');   
+        $student->save();
+
+        return back()->with('success', 'Record corrected successfully!');
     }
 
     /**
@@ -107,8 +117,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect('/students')->with('info', 'Record was deleted!');
     }
 }

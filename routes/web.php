@@ -24,6 +24,12 @@ Route::get('/students/create', 'StudentController@create');
 Route::get('/lectures/create', 'LectureController@create');
 Route::post('/students', 'StudentController@store');
 Route::post('/lectures', 'LectureController@store');
+Route::get('/students/{student}/edit', 'StudentController@edit');
+Route::get('/lectures/{lecture}/edit', 'LectureController@edit');
+Route::delete('/students/{student}', 'StudentController@destroy');
+Route::delete('/lectures/{lecture}', 'LectureController@destroy');
+Route::put('/students/{student}', 'StudentController@update');
+Route::put('/lectures/{lecture}', 'LectureController@update');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');    

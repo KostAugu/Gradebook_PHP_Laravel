@@ -33,7 +33,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th>{{__('No')}}</th>
-                    <th>{{ __('Name') }}</th>
+                    <th> @sortablelink('name', __('Name'))</th>
                     <th>{{ __('Description') }}</th>
                     <th>{{ __('Edit/Delete') }}</th>
                 </tr>
