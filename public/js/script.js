@@ -13,4 +13,8 @@ $(document).ready(function () {
         $('#deleteModal').modal('show');
         $('#deleteForm').attr("action", url);
     });
+
+    $('#lectures').select2();
+    $('#students').select2();
+    
 });

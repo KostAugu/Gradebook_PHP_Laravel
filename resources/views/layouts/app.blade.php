@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">   
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">    
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -28,6 +29,7 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="links"><a href="{{ url('/students') }}">{{ __('Students') }}</a></li>
                         <li class="links"><a href="{{ url('/lectures') }}">{{ __('Lectures') }}</a></li>
+                        <li class="links"><a href="{{ url('/grades') }}">{{ __('Grading') }}</a></li>                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -76,6 +78,7 @@
     </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/script.js') }}" defer></script>
+    <script src="{{ asset('js/select2.full.min.js') }}" defer></script>
+    <script src="{{ asset('js/script.js') }}" defer></script>   
 </body>
 </html>
